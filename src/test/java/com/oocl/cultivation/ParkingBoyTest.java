@@ -32,7 +32,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_corresponding_car_when_fetch_given_correct_ticket() {
+    public void should_return_corresponding_car_when_fetch_given_valid_ticket() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         Car car = new Car();
