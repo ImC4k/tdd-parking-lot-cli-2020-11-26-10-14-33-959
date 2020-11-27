@@ -79,4 +79,25 @@ class ParkingLotServiceManagerTest {
         //then
         assertEquals("Not enough position", exception.getMessage());
     }
+
+    @Test
+    void should_return_car_when_askParkingBoyWithIndexToFetch_given_valid_index_and_valid_ticket() throws NotEnoughPositionException {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
+        manager.addToManagementList(parkingBoy);
+        manager.addToManagementList(smartParkingBoy);
+        manager.addToManagementList(superSmartParkingBoy);
+        Car car = new Car();
+        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(0, car);
+
+        //when
+        Car actual = manager.askParkingBoyWithIndexToFetch(0, ticket);
+
+        //then
+        assertEquals(car, actual);
+    }
 }

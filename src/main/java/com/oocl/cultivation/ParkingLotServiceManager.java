@@ -25,4 +25,8 @@ public class ParkingLotServiceManager extends ParkingBoy {
         }
         return this.managementList.get(parkingBoyIndex).park(car);
     }
+
+    public Car askParkingBoyWithIndexToFetch(int parkingBoyIndex, ParkingTicket ticket) {
+        return null;
+    }
 }
