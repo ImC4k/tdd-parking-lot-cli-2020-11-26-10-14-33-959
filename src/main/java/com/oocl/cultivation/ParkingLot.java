@@ -13,12 +13,15 @@ public class ParkingLot {
     }
 
 
-    public Boolean isVacant() {
+    private Boolean isVacant() {
         return parkedCars.size() < CAPACITY;
     }
 
     public ParkingTicket park(Car car) {
-        parkedCars.add(car);
-        return new ParkingTicket();
+        if (parkedCars.size() < CAPACITY) {
+            parkedCars.add(car);
+            return new ParkingTicket();
+        }
+        return null;
     }
 }
