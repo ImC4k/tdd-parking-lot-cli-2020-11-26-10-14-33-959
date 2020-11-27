@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -54,5 +55,21 @@ class ParkingBoyTest {
         assertNotNull(ticket);
     }
 
+    @Test
+    public void should_fetch_from_second_parking_low_when_park_given_car_is_parked_to_second_parking_lot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(3);
+        Car car = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingTicket ticket = parkingBoy.park(car);
+
+        //when
+        Car actual = parkingBoy.fetch(ticket);
+
+        //then
+        assertEquals(car, actual);
+    }
 
 }
