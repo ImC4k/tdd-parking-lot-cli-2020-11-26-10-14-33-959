@@ -78,7 +78,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_fetch_given_parking_ticket_is_used() throws UnrecognizedParkingTicketException {
+    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_parking_ticket_is_used() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
