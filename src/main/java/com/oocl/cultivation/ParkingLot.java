@@ -24,4 +24,8 @@ public class ParkingLot {
         }
         return null;
     }
+
+    public Car fetch(ParkingTicket ticket) {
+        return null;
+    }
 }
