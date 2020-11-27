@@ -50,7 +50,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_1_parking_ticket_when_park_given_multiple_cars_and_1_available_spaces() throws NotEnoughPositionException {
+    public void should_throw_NotEnoughPositionException_parking_ticket_when_park_given_multiple_cars_and_1_available_spaces() throws NotEnoughPositionException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
@@ -58,11 +58,14 @@ public class ParkingLotTest {
 
         //when
         final ParkingTicket parkingTicket1 = parkingLot.park(car1);
-        final ParkingTicket parkingTicket2 = parkingLot.park(car2);
 
-        //then
+        Exception exceptionFromParkingCar2 = assertThrows(Exception.class, ()-> {
+            ParkingTicket parkingTicket2 = parkingLot.park(car2);
+        });
+
+
         assertNotNull(parkingTicket1);
-        assertNull(parkingTicket2);
+        assertEquals("Not enough position", exceptionFromParkingCar2.getMessage());
     }
 
     @Test
