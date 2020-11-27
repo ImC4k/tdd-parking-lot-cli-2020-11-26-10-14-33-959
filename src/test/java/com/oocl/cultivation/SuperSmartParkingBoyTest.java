@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SuperSmartParkingBoyTest {
     @Test
@@ -15,7 +16,7 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(4);
         ParkingLot parkingLot3 = new ParkingLot(6);
 
-        SuperSmartParkingBoy smartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
@@ -28,12 +29,12 @@ public class SuperSmartParkingBoyTest {
         parkingLot3.park(new Car());
 
         //when
-        smartParkingBoy.park(new Car());
+        superSmartParkingBoy.park(new Car());
 
         //then
-        assertEquals(5, smartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(2, smartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(4, smartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(5, superSmartParkingBoy.getParkingLots().get(0).getAvailableSpace());
+        assertEquals(2, superSmartParkingBoy.getParkingLots().get(1).getAvailableSpace());
+        assertEquals(4, superSmartParkingBoy.getParkingLots().get(2).getAvailableSpace());
     }
 
     @Test
@@ -43,18 +44,18 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(5);
         ParkingLot parkingLot3 = new ParkingLot(5);
 
-        SuperSmartParkingBoy smartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
 
         //when
-        smartParkingBoy.park(new Car());
+        superSmartParkingBoy.park(new Car());
 
         //then
-        assertEquals(3, smartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(4, smartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(5, smartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(3, superSmartParkingBoy.getParkingLots().get(0).getAvailableSpace());
+        assertEquals(4, superSmartParkingBoy.getParkingLots().get(1).getAvailableSpace());
+        assertEquals(5, superSmartParkingBoy.getParkingLots().get(2).getAvailableSpace());
     }
 }
