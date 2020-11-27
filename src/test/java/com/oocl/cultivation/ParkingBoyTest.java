@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 class ParkingBoyTest {
     @Test
-    public void should_call_parking_lot_fetch_when_fetch() {
+    public void should_call_parking_lot_fetch_when_fetch() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotMock);
