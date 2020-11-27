@@ -1,7 +1,6 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
-import sun.security.krb5.internal.Ticket;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,7 +64,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_car_when_fetch_given_parking_ticket_valid() {
+    public void should_return_car_when_fetch_given_parking_ticket_valid() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -79,7 +78,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_fetch_given_parking_ticket_is_used() {
+    public void should_return_null_when_fetch_given_parking_ticket_is_used() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -94,7 +93,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_fetch_given_parking_ticket_is_invalid() {
+    public void should_return_null_when_fetch_given_parking_ticket_is_invalid() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -106,20 +105,6 @@ public class ParkingLotTest {
 
         //then
         assertNull(carFromFetchedAlreadyTicket);
-    }
-
-    @Test
-    public void should_throw_exception_with_message_unrecognized_parking_ticket_when_fetch_given_invalid_ticket() {
-        //given
-        ParkingLot parkingLot = new ParkingLot(1);
-
-        //when
-        parkingLot.fetch(new ParkingTicket());
-
-        //then
-        assertThrows(Exception.class, ()-> {
-            parkingLot.fetch(new ParkingTicket());
-        }, "Unrecognized parking ticket");
     }
 
 
