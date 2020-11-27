@@ -118,7 +118,7 @@ public class ParkingLotTest {
 
         //then
         assertThrows(Exception.class, ()-> {
-            parkingLot.park(new Car());
+            parkingLot.fetch(new ParkingTicket());
         }, "Unrecognized parking ticket");
     }
 
