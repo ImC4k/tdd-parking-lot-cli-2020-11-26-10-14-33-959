@@ -17,4 +17,16 @@ public class ParkingLotTest {
         assertTrue(actual);
     }
 
+    @Test
+    public void should_return_false_when_isVacant_given_no_available_space() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(0);
+
+        //when
+        Boolean actual = parkingLot.isVacant();
+
+        //then
+        assertFalse(actual);
+    }
+
 }
