@@ -1,15 +1,16 @@
 package com.oocl.cultivation;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ParkingLot {
     private final Integer CAPACITY;
-    private List<Car> parkedCars;
+    private Map<ParkingTicket, Car> parkedCars;
 
     public ParkingLot(Integer CAPACITY) {
         this.CAPACITY = CAPACITY;
-        this.parkedCars = new ArrayList<>();
+        this.parkedCars = new HashMap<>();
     }
 
 
@@ -19,13 +20,14 @@ public class ParkingLot {
 
     public ParkingTicket park(Car car) {
         if (isVacant()) {
-            parkedCars.add(car);
-            return new ParkingTicket();
+            ParkingTicket parkingTicket = new ParkingTicket();
+            parkedCars.put(parkingTicket, car);
+            return parkingTicket;
         }
         return null;
     }
 
     public Car fetch(ParkingTicket ticket) {
-        return null;
+        return parkedCars.get(ticket);
     }
 }
