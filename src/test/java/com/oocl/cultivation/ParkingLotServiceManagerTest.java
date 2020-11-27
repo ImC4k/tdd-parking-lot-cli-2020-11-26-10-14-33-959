@@ -34,7 +34,9 @@ class ParkingLotServiceManagerTest {
         ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
 
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-
+        manager.addToManagementList(parkingBoy);
+        manager.addToManagementList(smartParkingBoy);
+        manager.addToManagementList(superSmartParkingBoy);
         //when
         ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(0, new Car());
 
