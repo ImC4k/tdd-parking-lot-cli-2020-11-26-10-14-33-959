@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 class ParkingBoyTest {
     @Test
-    public void should_call_parking_lot_fetch_when_fetch() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
+    void should_call_parking_lot_fetch_when_fetch() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotMock);
@@ -22,13 +22,13 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_call_parking_lot_park_when_park() throws NotEnoughPositionException {
+    void should_call_parking_lot_park_when_park() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotMock);
         Car car = new Car();
         //when
-        ParkingTicket parckingTicket = parkingBoy.park(car);
+        parkingBoy.park(car);
 
         //then
         verify(parkingLotMock, times(1)).park(car);
