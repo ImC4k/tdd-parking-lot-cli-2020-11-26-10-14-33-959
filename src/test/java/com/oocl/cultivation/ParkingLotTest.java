@@ -134,4 +134,18 @@ class ParkingLotTest {
         assertEquals(3, capacity);
     }
 
+    @Test
+    public void should_return_available_space_when_getNumberOfAvailableSpace() throws NotEnoughPositionException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(3);
+        Car car = new Car();
+
+        //when
+        parkingLot.park(car);
+        Integer availableSpace = parkingLot.getAvailableSpace();
+
+        //then
+        assertEquals(2, availableSpace);
+    }
+
 }

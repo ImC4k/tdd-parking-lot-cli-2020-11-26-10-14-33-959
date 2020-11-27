@@ -36,4 +36,8 @@ public class ParkingLot {
     public Integer getCapacity() {
         return this.CAPACITY;
     }
+
+    public Integer getAvailableSpace() {
+        return null;
+    }
 }
