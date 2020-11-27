@@ -26,7 +26,7 @@ class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_parking_ticket_when_askParkingBoyWithIndexToPark_valid_index_and_car() throws NotEnoughPositionException {
+    void should_return_parking_ticket_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() throws NotEnoughPositionException {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
         ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
@@ -44,7 +44,7 @@ class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_null_when_askParkingBoyWithIndexToPark_invalid_index_and_car() throws NotEnoughPositionException {
+    void should_return_null_when_askParkingBoyWithIndexToPark_given_invalid_index_and_car() throws NotEnoughPositionException {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
         ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
