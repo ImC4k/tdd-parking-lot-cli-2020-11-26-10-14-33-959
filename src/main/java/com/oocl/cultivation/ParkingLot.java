@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ParkingLot {
     private final Integer CAPACITY;
-    private Map<ParkingTicket, Car> parkedCars;
+    private final Map<ParkingTicket, Car> parkedCars;
 
     public ParkingLot(Integer CAPACITY) {
         this.CAPACITY = CAPACITY;
