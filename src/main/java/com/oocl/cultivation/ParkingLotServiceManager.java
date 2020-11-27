@@ -11,7 +11,8 @@ public class ParkingLotServiceManager extends ParkingBoy {
         this.managementList = new ArrayList<>();
     }
 
-    public void addToManagementList(ParkingBoy smartParkingBoy) {
+    public void addToManagementList(ParkingBoy parkingBoy) {
+        managementList.add(parkingBoy);
     }
 
     public List<ParkingBoy> getManagementList() {
