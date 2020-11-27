@@ -17,13 +17,13 @@ public class ParkingLot {
         return parkedCars.size() < CAPACITY;
     }
 
-    public ParkingTicket park(Car car) {
+    public ParkingTicket park(Car car) throws NotEnoughPositionException {
         if (isVacant()) {
             ParkingTicket parkingTicket = new ParkingTicket();
             parkedCars.put(parkingTicket, car);
             return parkingTicket;
         }
-        return null;
+        throw new NotEnoughPositionException();
     }
 
     public Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException{
