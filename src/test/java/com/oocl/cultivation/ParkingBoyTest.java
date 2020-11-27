@@ -3,7 +3,6 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,7 +39,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_park_to_second_parking_low_when_park_given_first_parking_lot_is_full_and_second_is_vacant() throws NotEnoughPositionException {
+    void should_park_to_second_parking_low_when_park_given_first_parking_lot_is_full_and_second_is_vacant() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(3);
@@ -55,7 +54,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_fetch_from_second_parking_low_when_park_given_car_is_parked_to_second_parking_lot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+    void should_fetch_from_second_parking_low_when_park_given_car_is_parked_to_second_parking_lot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(3);
@@ -72,7 +71,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_throw_NotEnoughPositionException_when_park_given_all_parking_slots_are_full() {
+    void should_throw_NotEnoughPositionException_when_park_given_all_parking_slots_are_full() {
         //given
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(0);
@@ -88,7 +87,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_null_parking_ticket() {
+    void should_throw_UnrecognizedParkingTicketException_when_fetch_given_null_parking_ticket() {
         //given
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(0);
@@ -103,7 +102,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_invalid_parking_ticket() {
+    void should_throw_UnrecognizedParkingTicketException_when_fetch_given_invalid_parking_ticket() {
         //given
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(0);

@@ -123,7 +123,7 @@ class ParkingLotTest {
     }
 
     @Test
-    public void should_return_size_of_capacity_when_getCapacity() {
+    void should_return_size_of_capacity_when_getCapacity() {
         //given
         ParkingLot parkingLot = new ParkingLot(3);
 
@@ -135,7 +135,7 @@ class ParkingLotTest {
     }
 
     @Test
-    public void should_return_available_space_when_getNumberOfAvailableSpace() throws NotEnoughPositionException {
+    void should_return_available_space_when_getNumberOfAvailableSpace() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(3);
         Car car = new Car();
