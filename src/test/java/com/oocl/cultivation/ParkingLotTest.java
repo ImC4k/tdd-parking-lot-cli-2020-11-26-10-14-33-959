@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
-    public void should_return_parking_ticket_when_park_given_a_car_and_with_available_capacity() {
+    public void should_return_parking_ticket_when_park_given_a_car_and_with_available_capacity() throws NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
@@ -34,7 +34,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_parking_tickets_when_park_given_multiple_cars_and_multiple_available_spaces() {
+    public void should_return_parking_tickets_when_park_given_multiple_cars_and_multiple_available_spaces() throws NotEnoughPositionException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
@@ -50,7 +50,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_1_parking_ticket_when_park_given_multiple_cars_and_1_available_spaces() {
+    public void should_return_1_parking_ticket_when_park_given_multiple_cars_and_1_available_spaces() throws NotEnoughPositionException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
@@ -66,7 +66,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_car_when_fetch_given_parking_ticket_valid() throws UnrecognizedParkingTicketException {
+    public void should_return_car_when_fetch_given_parking_ticket_valid() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -80,7 +80,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_parking_ticket_is_used() throws UnrecognizedParkingTicketException {
+    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_parking_ticket_is_used() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -97,7 +97,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_parking_ticket_is_invalid() throws UnrecognizedParkingTicketException {
+    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_parking_ticket_is_invalid() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
