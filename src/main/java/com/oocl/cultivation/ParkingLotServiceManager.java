@@ -27,6 +27,9 @@ public class ParkingLotServiceManager extends ParkingBoy {
     }
 
     public Car askParkingBoyWithIndexToFetch(int parkingBoyIndex, ParkingTicket ticket) throws UnrecognizedParkingTicketException {
+        if (parkingBoyIndex < 0 || parkingBoyIndex >= this.managementList.size()) {
+            return null;
+        }
         return this.managementList.get(parkingBoyIndex).fetch(ticket);
     }
 }
