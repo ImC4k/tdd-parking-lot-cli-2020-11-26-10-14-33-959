@@ -22,6 +22,6 @@ public class ParkingLotServiceManagerTest {
         manager.addToManagementList(superSmartParkingBoy);
 
         //then
-        assertEquals(3, manager.getManagementList());
+        assertEquals(3, manager.getManagementList().size());
     }
 }
