@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import sun.security.krb5.internal.Ticket;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -87,6 +88,21 @@ public class ParkingLotTest {
 
         //when
         Car carFromFetchedAlreadyTicket = parkingLot.fetch(ticket);
+
+        //then
+        assertNull(carFromFetchedAlreadyTicket);
+    }
+
+    @Test
+    public void should_return_null_when_fetch_given_parking_ticket_is_invalid() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        ParkingTicket ticket = parkingLot.park(car);
+        ParkingTicket selfCreatedTicket = new ParkingTicket();
+
+        //when
+        Car carFromFetchedAlreadyTicket = parkingLot.fetch(selfCreatedTicket);
 
         //then
         assertNull(carFromFetchedAlreadyTicket);
