@@ -10,7 +10,7 @@ public class ParkingBoy {
     }
 
     public List<ParkingLot> getParkingLots() {
-        return null;
+        return this.parkingLots;
     }
 
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
