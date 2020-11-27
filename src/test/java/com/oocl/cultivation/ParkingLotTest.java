@@ -18,4 +18,17 @@ public class ParkingLotTest {
         assertNotNull(parkingTicket);
     }
 
+    @Test
+    public void should_return_parking_ticket_when_park_given_a_car_and_with_no_available_capacity() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(0);
+
+        //when
+        ParkingTicket parkingTicket = parkingLot.park(car);
+
+        //then
+        assertNull(parkingTicket);
+    }
+
 }
