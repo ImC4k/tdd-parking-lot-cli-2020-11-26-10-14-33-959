@@ -62,6 +62,24 @@ class ParkingLotServiceManagerTest {
     }
 
     @Test
+    void should_return_null_when_askParkingBoyWithIndexToPark_given_negative_index_and_car() throws NotEnoughPositionException {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
+        manager.addToManagementList(parkingBoy);
+        manager.addToManagementList(smartParkingBoy);
+        manager.addToManagementList(superSmartParkingBoy);
+        //when
+        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(-1, new Car());
+
+        //then
+        assertNull(ticket);
+    }
+
+    @Test
     void should_throw_NotEnoughPositionException_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
