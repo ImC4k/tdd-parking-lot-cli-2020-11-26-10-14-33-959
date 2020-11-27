@@ -7,8 +7,7 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -70,6 +69,22 @@ class ParkingBoyTest {
 
         //then
         assertEquals(car, actual);
+    }
+
+    @Test
+    public void should_throw_NotEnoughPositionException_when_park_given_all_parking_slots_are_full() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(0);
+        Car car = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+
+        //when
+        Exception exception = assertThrows(Exception.class, ()-> parkingBoy.park(car));
+
+        //then
+        assertEquals("Not enough position", exception.getMessage());
     }
 
 }
