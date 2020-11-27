@@ -19,7 +19,7 @@ public class ParkingLotServiceManager extends ParkingBoy {
         return this.managementList;
     }
 
-    public ParkingTicket askParkingBoyWithIndexToPark(int parkingBoyIndex, Car car) {
-        return null;
+    public ParkingTicket askParkingBoyWithIndexToPark(int parkingBoyIndex, Car car) throws NotEnoughPositionException {
+        return this.managementList.get(parkingBoyIndex).park(car);
     }
 }
