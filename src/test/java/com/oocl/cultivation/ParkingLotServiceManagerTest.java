@@ -121,4 +121,23 @@ class ParkingLotServiceManagerTest {
         //then
         assertNull(actual);
     }
+
+    @Test
+    void should_throw_UnrecognizedParkingTicketException_when_askParkingBoyWithIndexToFetch_given_valid_index_and_invalid_ticket() throws NotEnoughPositionException {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
+        manager.addToManagementList(parkingBoy);
+        manager.addToManagementList(smartParkingBoy);
+        manager.addToManagementList(superSmartParkingBoy);
+        manager.askParkingBoyWithIndexToPark(1, new Car());
+        //when
+        Exception exception = assertThrows(Exception.class, ()-> manager.askParkingBoyWithIndexToFetch(1, new ParkingTicket()));
+
+        //then
+        assertEquals("Unrecognized parking ticket", exception.getMessage());
+    }
 }
