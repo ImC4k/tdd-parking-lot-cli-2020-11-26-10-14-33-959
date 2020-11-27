@@ -62,7 +62,7 @@ class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_throw_NotEnoughPositionException_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() throws NotEnoughPositionException {
+    void should_throw_NotEnoughPositionException_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
         ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(0)));
