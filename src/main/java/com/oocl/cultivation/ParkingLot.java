@@ -18,7 +18,7 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if (parkedCars.size() < CAPACITY) {
+        if (isVacant()) {
             parkedCars.add(car);
             return new ParkingTicket();
         }
