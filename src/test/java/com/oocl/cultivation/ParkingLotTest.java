@@ -19,7 +19,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_parking_ticket_when_park_given_a_car_and_with_no_available_capacity() {
+    public void should_return_null_when_park_given_a_car_and_with_no_available_capacity() {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(0);
