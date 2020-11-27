@@ -15,7 +15,7 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(4);
         ParkingLot parkingLot3 = new ParkingLot(6);
 
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
+        SuperSmartParkingBoy smartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
