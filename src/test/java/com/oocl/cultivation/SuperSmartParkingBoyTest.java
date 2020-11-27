@@ -58,4 +58,29 @@ public class SuperSmartParkingBoyTest {
         assertEquals(4, superSmartParkingBoy.getParkingLots().get(1).getAvailableSpace());
         assertEquals(5, superSmartParkingBoy.getParkingLots().get(2).getAvailableSpace());
     }
+
+    @Test
+    public void should_throw_NotEnoughPositionException_when_park_given_all_parking_lots_full() throws NotEnoughPositionException {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(2);
+        ParkingLot parkingLot3 = new ParkingLot(3);
+
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
+
+        parkingLot1.park(new Car());
+
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+
+        //when
+        Exception exception = assertThrows(Exception.class, ()-> superSmartParkingBoy.park(new Car()));
+
+        //then
+        assertEquals("Not enough position", exception.getMessage());
+    }
 }
