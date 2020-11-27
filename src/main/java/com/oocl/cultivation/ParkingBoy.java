@@ -10,7 +10,13 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
-        return this.parkingLots.get(0).park(car);
+        for (ParkingLot parkingLot : parkingLots) {
+            try {
+                return parkingLot.park(car);
+            }
+            catch (NotEnoughPositionException ignored) {}
+        }
+        throw new NotEnoughPositionException();
     }
 
     public Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException {
