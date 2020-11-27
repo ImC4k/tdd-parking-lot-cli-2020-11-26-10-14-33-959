@@ -20,16 +20,20 @@ public class ParkingLotServiceManager extends ParkingBoy {
     }
 
     public ParkingTicket askParkingBoyWithIndexToPark(int parkingBoyIndex, Car car) throws NotEnoughPositionException {
-        if (parkingBoyIndex < 0 || parkingBoyIndex >= this.managementList.size()) {
+        if (!isValidParkingBoyIndex(parkingBoyIndex)) {
             return null;
         }
         return this.managementList.get(parkingBoyIndex).park(car);
     }
 
     public Car askParkingBoyWithIndexToFetch(int parkingBoyIndex, ParkingTicket ticket) throws UnrecognizedParkingTicketException {
-        if (parkingBoyIndex < 0 || parkingBoyIndex >= this.managementList.size()) {
+        if (!isValidParkingBoyIndex(parkingBoyIndex)) {
             return null;
         }
         return this.managementList.get(parkingBoyIndex).fetch(ticket);
+    }
+
+    private boolean isValidParkingBoyIndex(int parkingBoyIndex) {
+        return parkingBoyIndex >= 0 && parkingBoyIndex < this.managementList.size();
     }
 }
