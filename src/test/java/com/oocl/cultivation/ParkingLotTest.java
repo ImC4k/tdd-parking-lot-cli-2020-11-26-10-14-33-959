@@ -19,16 +19,18 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_park_given_a_car_and_with_no_available_capacity() {
+    public void should_throw_NotEnoughPositionException_when_park_given_a_car_and_with_no_available_capacity() throws NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(0);
 
         //when
-        ParkingTicket parkingTicket = parkingLot.park(car);
+        Exception exception = assertThrows(Exception.class, ()-> {
+            ParkingTicket parkingTicket = parkingLot.park(car);
+        });
 
         //then
-        assertNull(parkingTicket);
+        assertEquals("Not enough position", exception.getMessage());
     }
 
     @Test
