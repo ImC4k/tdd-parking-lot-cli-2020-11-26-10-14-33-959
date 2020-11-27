@@ -31,4 +31,21 @@ public class ParkingLotTest {
         assertNull(parkingTicket);
     }
 
+    @Test
+    public void should_return_parking_tickets_when_park_given_multiple_cars_and_multiple_available_spaces() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot(5);
+
+        //when
+        final ParkingTicket parkingTicket1 = parkingLot.park(car1);
+        final ParkingTicket parkingTicket2 = parkingLot.park(car2);
+
+        //then
+        assertNotNull(parkingTicket1);
+        assertNotNull(parkingTicket2);
+    }
+
+
 }
