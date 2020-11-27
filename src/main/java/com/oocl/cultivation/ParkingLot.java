@@ -18,6 +18,7 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        return null;
+        parkedCars.add(car);
+        return new ParkingTicket();
     }
 }
