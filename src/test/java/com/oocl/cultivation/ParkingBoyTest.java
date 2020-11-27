@@ -1,61 +1,37 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 class ParkingBoyTest {
     @Test
-    public void should_return_parking_ticket_when_park_given_a_car_and_parking_lot_has_available_space() {
+    public void should_call_parking_lot_fetch_when_fetch() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotMock);
         Car car = new Car();
-
+        ParkingTicket parckingTicket = parkingBoy.park(car);
         //when
-        ParkingTicket ticket = parkingBoy.park(car);
+        parkingBoy.fetch(parckingTicket);
 
         //then
-        assertNotNull(ticket);
+        verify(parkingLotMock, times(1)).fetch(parckingTicket);
     }
 
     @Test
-    public void should_return_null_when_park_given_a_car_and_parking_lot_has_no_available_space() {
+    public void should_call_parking_lot_park_when_park() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(0));
+        ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotMock);
         Car car = new Car();
-
         //when
-        ParkingTicket ticket = parkingBoy.park(car);
+        ParkingTicket parckingTicket = parkingBoy.park(car);
 
         //then
-        assertNull(ticket);
+        verify(parkingLotMock, times(1)).park(car);
     }
 
-    @Test
-    public void should_return_corresponding_car_when_fetch_given_valid_ticket() {
-        //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
-        Car car = new Car();
-        ParkingTicket ticket = parkingBoy.park(car);
-
-        //when
-        Car actual = parkingBoy.fetch(ticket);
-
-        //then
-        assertEquals(car, actual);
-    }
-
-    @Test
-    public void should_return_null_when_fetch_given_invalid_ticket() {
-        //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
-        Car car = new Car();
-        ParkingTicket ticket = new ParkingTicket();
-
-        //when
-        Car actual = parkingBoy.fetch(ticket);
-
-        //then
-        assertNull(actual);
-    }
 }
