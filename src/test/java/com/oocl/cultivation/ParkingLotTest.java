@@ -121,4 +121,17 @@ class ParkingLotTest {
         //then
         assertEquals("Unrecognized parking ticket", exception.getMessage());
     }
+
+    @Test
+    public void should_return_size_of_capacity_when_getCapacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(3);
+
+        //when
+        Integer capacity = parkingLot.getCapacity();
+
+        //then
+        assertEquals(3, capacity);
+    }
+
 }
