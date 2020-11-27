@@ -16,4 +16,8 @@ public class ParkingLot {
     public Boolean isVacant() {
         return parkedCars.size() < CAPACITY;
     }
+
+    public ParkingTicket park(Car car) {
+        return null;
+    }
 }
