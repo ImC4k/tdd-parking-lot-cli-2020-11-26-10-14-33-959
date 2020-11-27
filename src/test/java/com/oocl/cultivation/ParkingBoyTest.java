@@ -102,4 +102,19 @@ class ParkingBoyTest {
         assertEquals("Unrecognized parking ticket", exception.getMessage());
     }
 
+    @Test
+    public void should_throw_UnrecognizedParkingTicketException_when_fetch_given_invalid_parking_ticket() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(0);
+
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+
+        //when
+        Exception exception = assertThrows(Exception.class, ()-> parkingBoy.fetch(new ParkingTicket()));
+
+        //then
+        assertEquals("Unrecognized parking ticket", exception.getMessage());
+    }
+
 }
