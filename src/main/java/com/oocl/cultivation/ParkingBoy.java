@@ -3,10 +3,12 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class ParkingBoy {
+    private ParkingBoyParkingStrategy parkingBoyParkingStrategy;
     protected List<ParkingLot> parkingLots;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
+        this.parkingBoyParkingStrategy = new StandardParkingStrategy();
     }
 
     public List<ParkingLot> getParkingLots() {
@@ -14,13 +16,7 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.park(car);
-            }
-            catch (NotEnoughPositionException ignored) {}
-        }
-        throw new NotEnoughPositionException();
+        return parkingBoyParkingStrategy.park(car, this.parkingLots);
     }
 
     public Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException {
