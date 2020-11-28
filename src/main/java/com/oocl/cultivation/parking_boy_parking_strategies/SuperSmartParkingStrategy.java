@@ -4,7 +4,6 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.NotEnoughPositionException;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
-import com.oocl.cultivation.parking_boy_parking_strategies.ParkingBoyParkingStrategy;
 
 import java.util.Comparator;
 import java.util.List;

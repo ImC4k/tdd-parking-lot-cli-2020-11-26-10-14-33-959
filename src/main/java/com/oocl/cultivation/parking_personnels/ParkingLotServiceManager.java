@@ -1,7 +1,6 @@
 package com.oocl.cultivation.parking_personnels;
 
 import com.oocl.cultivation.*;
-import com.oocl.cultivation.parking_personnels.ParkingBoy;
 
 import java.util.ArrayList;
 import java.util.List;

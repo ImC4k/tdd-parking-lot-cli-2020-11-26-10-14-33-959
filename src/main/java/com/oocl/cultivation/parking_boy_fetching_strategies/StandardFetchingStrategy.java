@@ -4,7 +4,6 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
 import com.oocl.cultivation.UnrecognizedParkingTicketException;
-import com.oocl.cultivation.parking_boy_fetching_strategies.ParkingBoyFetchingStrategy;
 
 import java.util.List;
 
