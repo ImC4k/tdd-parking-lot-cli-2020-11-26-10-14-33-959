@@ -1,7 +1,7 @@
 package com.oocl.cultivation.parking_boy_parking_strategies;
 
 import com.oocl.cultivation.Car;
-import com.oocl.cultivation.NotEnoughPositionException;
+import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
 

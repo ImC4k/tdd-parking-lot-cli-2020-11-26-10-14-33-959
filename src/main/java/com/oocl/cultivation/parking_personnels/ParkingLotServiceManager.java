@@ -1,6 +1,8 @@
 package com.oocl.cultivation.parking_personnels;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
+import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 
 import java.util.ArrayList;
 import java.util.List;

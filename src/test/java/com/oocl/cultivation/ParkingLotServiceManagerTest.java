@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
+import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 import com.oocl.cultivation.parking_personnels.ParkingBoy;
 import com.oocl.cultivation.parking_personnels.ParkingLotServiceManager;
 import com.oocl.cultivation.parking_personnels.SmartParkingBoy;

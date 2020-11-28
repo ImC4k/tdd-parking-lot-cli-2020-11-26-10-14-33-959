@@ -5,6 +5,8 @@ import com.oocl.cultivation.parking_boy_fetching_strategies.ParkingBoyFetchingSt
 import com.oocl.cultivation.parking_boy_fetching_strategies.StandardFetchingStrategy;
 import com.oocl.cultivation.parking_boy_parking_strategies.ParkingBoyParkingStrategy;
 import com.oocl.cultivation.parking_boy_parking_strategies.StandardParkingStrategy;
+import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
+import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 
 import java.util.List;
 
