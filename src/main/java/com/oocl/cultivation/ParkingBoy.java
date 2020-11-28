@@ -4,11 +4,13 @@ import java.util.List;
 
 public class ParkingBoy {
     protected ParkingBoyParkingStrategy parkingBoyParkingStrategy;
+    protected ParkingBoyFetchingStrategy parkingBoyFetchingStrategy;
     protected List<ParkingLot> parkingLots;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
         this.parkingBoyParkingStrategy = new StandardParkingStrategy();
+        this.parkingBoyFetchingStrategy = new StandardFetchingStrategy();
     }
 
     public List<ParkingLot> getParkingLots() {
@@ -20,12 +22,6 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException {
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.fetch(ticket);
-            }
-            catch (UnrecognizedParkingTicketException ignored) {}
-        }
-        throw new UnrecognizedParkingTicketException();
+        return parkingBoyFetchingStrategy.fetch(ticket, this.parkingLots);
     }
 }
