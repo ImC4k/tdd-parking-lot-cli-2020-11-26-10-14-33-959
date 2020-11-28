@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class ParkingBoy {
-    private ParkingBoyParkingStrategy parkingBoyParkingStrategy;
+    protected ParkingBoyParkingStrategy parkingBoyParkingStrategy;
     protected List<ParkingLot> parkingLots;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
