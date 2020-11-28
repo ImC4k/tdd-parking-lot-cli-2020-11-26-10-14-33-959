@@ -3,6 +3,8 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -157,5 +159,50 @@ class ParkingLotServiceManagerTest {
 
         //then
         assertEquals("Unrecognized parking ticket", exception.getMessage());
+    }
+
+    // todo test manager parks in standard manner
+    @Test
+    void should_park_car_to_first_parking_lot_when_park_given_3_parking_lots_are_free_but_first_ones_available_position_rate_is_lowest() throws NotEnoughPositionException {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        ParkingLot parkingLot3 = new ParkingLot(10);
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()));
+
+        // parking lot 1 is 1/10
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+        parkingLot1.park(new Car());
+
+        // parking lot 2 is 3/10
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+        parkingLot2.park(new Car());
+
+        // parking lot 3 is 5/10
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+        parkingLot3.park(new Car());
+
+        //when
+        manager.park(new Car());
+
+        //then
+        assertEquals(0, parkingLot1.getAvailableSpace());
+        assertEquals(3, parkingLot2.getAvailableSpace());
+        assertEquals(5, parkingLot3.getAvailableSpace());
     }
 }
