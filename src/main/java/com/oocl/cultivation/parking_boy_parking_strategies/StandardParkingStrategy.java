@@ -10,12 +10,6 @@ import java.util.List;
 public class StandardParkingStrategy implements ParkingBoyParkingStrategy {
     @Override
     public ParkingTicket park(Car car, List<ParkingLot> parkingLots) throws NotEnoughPositionException {
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.park(car);
-            }
-            catch (NotEnoughPositionException ignored) {}
-        }
-        throw new NotEnoughPositionException();
+        return parkingLots.stream().filter(parkingLot -> parkingLot.getAvailableSpace() > 0).findFirst().orElseThrow(NotEnoughPositionException::new).park(car);
     }
 }
