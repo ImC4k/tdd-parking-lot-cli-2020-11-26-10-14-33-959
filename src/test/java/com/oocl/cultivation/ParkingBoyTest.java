@@ -10,28 +10,29 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class ParkingBoyTest {
     @Test
     void should_call_parking_lot_fetch_when_fetch() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
+        when(parkingLotMock.getAvailableSpace()).thenReturn(1);
         ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()));
         Car car = new Car();
-        ParkingTicket parckingTicket = parkingBoy.park(car);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
         //when
-        parkingBoy.fetch(parckingTicket);
+        parkingBoy.fetch(parkingTicket);
 
         //then
-        verify(parkingLotMock, times(1)).fetch(parckingTicket);
+        verify(parkingLotMock, times(1)).fetch(parkingTicket);
     }
 
     @Test
     void should_call_parking_lot_park_when_park() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
+        when(parkingLotMock.getAvailableSpace()).thenReturn(1);
         ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()));
         Car car = new Car();
         //when
