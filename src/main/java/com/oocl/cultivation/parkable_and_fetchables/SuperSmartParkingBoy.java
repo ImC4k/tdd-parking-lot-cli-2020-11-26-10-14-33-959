@@ -2,7 +2,6 @@ package com.oocl.cultivation.parkable_and_fetchables;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingTicket;
-import com.oocl.cultivation.parking_boy_parking_strategies.SuperSmartParkingStrategy;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 
 import java.util.Comparator;
