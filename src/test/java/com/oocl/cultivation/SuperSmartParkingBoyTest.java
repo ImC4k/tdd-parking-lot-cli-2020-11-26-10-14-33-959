@@ -1,7 +1,8 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
-import com.oocl.cultivation.parking_personnels.SuperSmartParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;

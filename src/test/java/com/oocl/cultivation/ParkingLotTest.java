@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;

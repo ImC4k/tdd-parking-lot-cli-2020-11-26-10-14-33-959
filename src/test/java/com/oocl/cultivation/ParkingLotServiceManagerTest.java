@@ -1,11 +1,11 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.parkable_and_fetchables.ParkableAndFetchable;
+import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
-import com.oocl.cultivation.parking_personnels.ParkingBoy;
-import com.oocl.cultivation.parking_personnels.ParkingLotServiceManager;
-import com.oocl.cultivation.parking_personnels.SmartParkingBoy;
-import com.oocl.cultivation.parking_personnels.SuperSmartParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.ParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.ParkingLotServiceManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -16,158 +16,79 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotServiceManagerTest {
     @Test
-    void should_be_able_to_add_parking_boy_to_management_list_when_addToManagementList_given_a_parking_boy() {
+    void should_be_able_to_add_parking_boy_to_management_list_when_addToManagementList_given_a_ParkableAndFetchable() throws NotEnoughPositionException {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkableAndFetchable parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
 
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(new ParkingLot(10)).collect(Collectors.toList()));
 
         //when
         manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
 
         //then
-        assertEquals(3, manager.getManagementList().size());
+        assertNotNull(manager.park(new Car()));
     }
 
     @Test
-    void should_return_parking_ticket_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() throws NotEnoughPositionException {
+    void should_be_able_to_park_to_parking_lot_when_park_given_managers_managementList_contains_only_a_parking_lot() throws NotEnoughPositionException {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
-        //when
-        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(0, new Car());
-
-        //then
-        assertNotNull(ticket);
-    }
-
-    @Test
-    void should_return_null_when_askParkingBoyWithIndexToPark_given_invalid_index_and_car() throws NotEnoughPositionException {
-        //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
-        //when
-        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(5, new Car());
-
-        //then
-        assertNull(ticket);
-    }
-
-    @Test
-    void should_return_null_when_askParkingBoyWithIndexToPark_given_negative_index_and_car() throws NotEnoughPositionException {
-        //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
-        //when
-        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(-1, new Car());
-
-        //then
-        assertNull(ticket);
-    }
-
-    @Test
-    void should_throw_NotEnoughPositionException_when_askParkingBoyWithIndexToPark_given_valid_index_and_car() {
-        //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(0)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(parkingLot));
 
         //when
-        Exception exception = assertThrows(Exception.class, ()-> manager.askParkingBoyWithIndexToPark(1, new Car()));
+        manager.park(new Car());
 
         //then
-        assertEquals("Not enough position", exception.getMessage());
+        assertEquals(9, parkingLot.getAvailableSpace());
     }
 
     @Test
-    void should_return_car_when_askParkingBoyWithIndexToFetch_given_valid_index_and_valid_ticket() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+    void should_be_able_to_fetch_from_parking_lot_when_fetch_given_managers_managementList_contains_only_a_parking_lot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(parkingLot));
         Car car = new Car();
-        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(0, car);
+        ParkingTicket ticket = manager.park(car);
 
         //when
-        Car actual = manager.askParkingBoyWithIndexToFetch(0, ticket);
+        Car actual = manager.fetch(ticket);
 
         //then
         assertEquals(car, actual);
     }
 
     @Test
-    void should_return_null_when_askParkingBoyWithIndexToFetch_given_invalid_index() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+    void should_be_able_to_park_to_second_parking_lot_when_park_given_managers_managementList_contains_multiple_ParkableAndFetchable_and_first_entity_cant_be_parked() throws NotEnoughPositionException {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
-        Car car = new Car();
-        ParkingTicket ticket = manager.askParkingBoyWithIndexToPark(0, car);
+        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLotForParkingBoy = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy));
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot, parkingBoy).collect(Collectors.toList()));
 
         //when
-        Car actual = manager.askParkingBoyWithIndexToFetch(10, ticket);
+        manager.park(new Car());
 
         //then
-        assertNull(actual);
+        assertEquals(9, parkingLotForParkingBoy.getAvailableSpace());
     }
 
     @Test
-    void should_throw_UnrecognizedParkingTicketException_when_askParkingBoyWithIndexToFetch_given_valid_index_and_invalid_ticket() throws NotEnoughPositionException {
+    void should_be_able_to_fetch_from_second_parking_lot_when_park_given_managers_managementList_contains_multiple_ParkableAndFetchable_and_the_car_is_parked_to_second() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy smartParkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLotForParkingBoy = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy));
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot, parkingBoy).collect(Collectors.toList()));
+        Car car = new Car();
+        ParkingTicket ticket = manager.park(car);
 
-        ParkingLotServiceManager manager = new ParkingLotServiceManager(Collections.singletonList(new ParkingLot(10)));
-        manager.addToManagementList(parkingBoy);
-        manager.addToManagementList(smartParkingBoy);
-        manager.addToManagementList(superSmartParkingBoy);
-        manager.askParkingBoyWithIndexToPark(1, new Car());
         //when
-        Exception exception = assertThrows(Exception.class, ()-> manager.askParkingBoyWithIndexToFetch(1, new ParkingTicket()));
+        Car actual = manager.fetch(ticket);
 
         //then
-        assertEquals("Unrecognized parking ticket", exception.getMessage());
+        assertEquals(car, actual);
     }
 
-    // todo test manager parks in standard manner
     @Test
     void should_park_car_to_first_parking_lot_when_park_given_3_parking_lots_are_free_but_first_ones_available_position_rate_is_lowest() throws NotEnoughPositionException {
         //given

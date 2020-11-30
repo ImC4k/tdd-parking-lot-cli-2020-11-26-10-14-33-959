@@ -1,7 +1,8 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
-import com.oocl.cultivation.parking_personnels.SmartParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.SmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
@@ -25,9 +26,9 @@ class SmartParkingBoyTest {
         smartParkingBoy.park(car);
 
         //then
-        assertEquals(3, smartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(4, smartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(4, smartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(3, parkingLot1.getAvailableSpace()); // todo
+        assertEquals(4, parkingLot2.getAvailableSpace());
+        assertEquals(4, parkingLot3.getAvailableSpace());
     }
 
     @Test
