@@ -2,6 +2,10 @@ package com.oocl.cultivation;
 
 import com.oocl.cultivation.parkable_and_fetchables.ParkableAndFetchable;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
+import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
+import com.oocl.cultivation.parking_boy_parking_behaviors.SmartParkingBoyParkingStrategy;
+import com.oocl.cultivation.parking_boy_parking_behaviors.StandardParkingBoyParkingBehavior;
+import com.oocl.cultivation.parking_boy_parking_behaviors.SuperSmartParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingBoy;
@@ -18,7 +22,7 @@ class ParkingLotServiceManagerTest {
     @Test
     void should_be_able_to_add_parking_boy_to_management_list_when_addToManagementList_given_a_ParkableAndFetchable() throws NotEnoughPositionException {
         //given
-        ParkableAndFetchable parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)));
+        ParkableAndFetchable parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(new ParkingLot(10)).collect(Collectors.toList()));
 
@@ -62,7 +66,7 @@ class ParkingLotServiceManagerTest {
         //given
         ParkingLot parkingLot = new ParkingLot(0);
         ParkingLot parkingLotForParkingBoy = new ParkingLot(10);
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot, parkingBoy).collect(Collectors.toList()));
 
         //when
@@ -77,7 +81,7 @@ class ParkingLotServiceManagerTest {
         //given
         ParkingLot parkingLot = new ParkingLot(0);
         ParkingLot parkingLotForParkingBoy = new ParkingLot(10);
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot, parkingBoy).collect(Collectors.toList()));
         Car car = new Car();
         ParkingTicket ticket = manager.park(car);

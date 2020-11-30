@@ -1,6 +1,8 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
+import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
+import com.oocl.cultivation.parking_boy_parking_behaviors.StandardParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingBoy;
@@ -19,7 +21,7 @@ class ParkingBoyTest {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
         when(parkingLotMock.getAvailableSpace()).thenReturn(1);
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
         //when
@@ -34,7 +36,7 @@ class ParkingBoyTest {
         //given
         ParkingLot parkingLotMock = Mockito.mock(ParkingLot.class);
         when(parkingLotMock.getAvailableSpace()).thenReturn(1);
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLotMock).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         Car car = new Car();
         //when
         parkingBoy.park(car);
@@ -49,7 +51,7 @@ class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(3);
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         //when
         ParkingTicket ticket = parkingBoy.park(car);
@@ -65,7 +67,7 @@ class ParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(3);
         Car car = new Car();
 
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         ParkingTicket ticket = parkingBoy.park(car);
 
         //when
@@ -82,7 +84,7 @@ class ParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(0);
         Car car = new Car();
 
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         //when
         Exception exception = assertThrows(Exception.class, ()-> parkingBoy.park(car));
@@ -97,7 +99,7 @@ class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(0);
 
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         //when
         Exception exception = assertThrows(Exception.class, ()-> parkingBoy.fetch(null));
@@ -112,7 +114,7 @@ class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(0);
 
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()));
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         //when
         Exception exception = assertThrows(Exception.class, ()-> parkingBoy.fetch(new ParkingTicket()));
