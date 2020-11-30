@@ -4,7 +4,7 @@ import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
 import com.oocl.cultivation.parking_boy_parking_behaviors.SuperSmartParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
-import com.oocl.cultivation.parkable_and_fetchables.SuperSmartParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
@@ -21,7 +21,7 @@ class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(4);
         ParkingLot parkingLot3 = new ParkingLot(6);
 
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy superSmartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
@@ -49,7 +49,7 @@ class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(5);
         ParkingLot parkingLot3 = new ParkingLot(5);
 
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy superSmartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
         parkingLot1.park(new Car());
@@ -71,7 +71,7 @@ class SuperSmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(2);
         ParkingLot parkingLot3 = new ParkingLot(3);
 
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy superSmartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SuperSmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         parkingLot1.park(new Car());
 

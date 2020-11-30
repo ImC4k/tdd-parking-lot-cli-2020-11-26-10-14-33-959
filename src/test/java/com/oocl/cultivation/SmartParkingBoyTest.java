@@ -3,9 +3,8 @@ package com.oocl.cultivation;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
 import com.oocl.cultivation.parking_boy_parking_behaviors.SmartParkingBoyParkingStrategy;
-import com.oocl.cultivation.parking_boy_parking_behaviors.StandardParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
-import com.oocl.cultivation.parkable_and_fetchables.SmartParkingBoy;
+import com.oocl.cultivation.parkable_and_fetchables.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
@@ -23,7 +22,7 @@ class SmartParkingBoyTest {
         ParkingLot parkingLot3 = new ParkingLot(4);
         Car car = new Car();
 
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy smartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
 
         //when
         smartParkingBoy.park(car);
@@ -42,7 +41,7 @@ class SmartParkingBoyTest {
         ParkingLot parkingLot3 = new ParkingLot(5);
         Car car = new Car();
 
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy smartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
 
         //when
         smartParkingBoy.park(car);
@@ -60,7 +59,7 @@ class SmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(2);
         ParkingLot parkingLot3 = new ParkingLot(3);
 
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy smartParkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2, parkingLot3).collect(Collectors.toList()), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
 
         parkingLot1.park(new Car());
 
