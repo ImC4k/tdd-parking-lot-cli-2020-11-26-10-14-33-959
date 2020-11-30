@@ -35,9 +35,9 @@ class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(new Car());
 
         //then
-        assertEquals(5, superSmartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(2, superSmartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(4, superSmartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(5, parkingLot1.getAvailableSpace());
+        assertEquals(2, parkingLot2.getAvailableSpace());
+        assertEquals(4, parkingLot3.getAvailableSpace());
     }
 
     @Test
@@ -57,9 +57,9 @@ class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(new Car());
 
         //then
-        assertEquals(3, superSmartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(4, superSmartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(5, superSmartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(3, parkingLot1.getAvailableSpace());
+        assertEquals(4, parkingLot2.getAvailableSpace());
+        assertEquals(5, parkingLot3.getAvailableSpace());
     }
 
     @Test

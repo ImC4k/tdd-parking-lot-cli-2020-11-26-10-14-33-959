@@ -45,9 +45,9 @@ class SmartParkingBoyTest {
         smartParkingBoy.park(car);
 
         //then
-        assertEquals(3, smartParkingBoy.getParkingLots().get(0).getAvailableSpace());
-        assertEquals(4, smartParkingBoy.getParkingLots().get(1).getAvailableSpace());
-        assertEquals(5, smartParkingBoy.getParkingLots().get(2).getAvailableSpace());
+        assertEquals(3, parkingLot1.getAvailableSpace());
+        assertEquals(4, parkingLot2.getAvailableSpace());
+        assertEquals(5, parkingLot3.getAvailableSpace());
     }
 
     @Test

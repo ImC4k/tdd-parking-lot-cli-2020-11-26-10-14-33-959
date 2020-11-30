@@ -13,10 +13,6 @@ public class ParkingBoy implements ParkableAndFetchable {
         this.parkingLots = parkingLots;
     }
 
-    public List<ParkingLot> getParkingLots() {
-        return this.parkingLots;
-    }
-
     @Override
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
         return parkingLots.stream().filter(parkingLot -> parkingLot.getAvailableSpace() > 0).findFirst().orElseThrow(NotEnoughPositionException::new).park(car);
