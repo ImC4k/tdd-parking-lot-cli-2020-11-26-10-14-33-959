@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import com.oocl.cultivation.parkable_and_fetchables.ParkableAndFetchable;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
-import com.oocl.cultivation.parking_boy_parking_behaviors.SmartParkingBoyParkingStrategy;
+import com.oocl.cultivation.parking_boy_parking_behaviors.SmartParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_boy_parking_behaviors.StandardParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_boy_parking_behaviors.SuperSmartParkingBoyParkingBehavior;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
@@ -66,7 +66,7 @@ class ParkingLotServiceManagerTest {
         //given
         ParkingLot parkingLot = new ParkingLot(0);
         ParkingLot parkingLotForParkingBoy = new ParkingLot(10);
-        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy), new SmartParkingBoyParkingStrategy(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(parkingLotForParkingBoy), new SmartParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(parkingLot, parkingBoy).collect(Collectors.toList()));
 
         //when
