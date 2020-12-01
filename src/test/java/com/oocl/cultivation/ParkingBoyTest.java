@@ -51,7 +51,9 @@ class ParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(0);
         ParkingLot parkingLot2 = new ParkingLot(3);
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
+        ParkingBoy parkingBoy = new ParkingBoy(Stream.of(parkingLot1, parkingLot2).collect(Collectors.toList()),
+                new StandardParkingBoyParkingBehavior(),
+                new StandardParkingBoyFetchingBehavior());
 
         //when
         ParkingTicket ticket = parkingBoy.park(car);
