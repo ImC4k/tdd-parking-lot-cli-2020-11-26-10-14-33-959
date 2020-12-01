@@ -14,7 +14,6 @@ public class SuperSmartParkingBoyParkingBehavior implements ParkingBoyParkingBeh
         return parkingLots.stream().max(Comparator.comparing(this::getAvailablePositionRate)).orElseThrow(NotEnoughPositionException::new).park(car);
     }
 
-
     private double getAvailablePositionRate(ParkingLot parkingLot) {
         return (double) parkingLot.getAvailableSpace() / parkingLot.getCapacity();
     }
