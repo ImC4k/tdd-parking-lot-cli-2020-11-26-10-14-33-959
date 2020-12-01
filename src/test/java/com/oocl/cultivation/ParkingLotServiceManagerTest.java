@@ -1,6 +1,6 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.parkable_and_fetchables.ParkableAndFetchable;
+import com.oocl.cultivation.parkable_and_fetchables.Parkable;
 import com.oocl.cultivation.parkable_and_fetchables.ParkingLot;
 import com.oocl.cultivation.parking_boy_fetching_behaviors.StandardParkingBoyFetchingBehavior;
 import com.oocl.cultivation.parking_boy_parking_behaviors.SmartParkingBoyParkingBehavior;
@@ -22,7 +22,7 @@ class ParkingLotServiceManagerTest {
     @Test
     void should_be_able_to_add_parking_boy_to_management_list_when_addToManagementList_given_a_ParkableAndFetchable() throws NotEnoughPositionException {
         //given
-        ParkableAndFetchable parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
+        Parkable parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(10)), new StandardParkingBoyParkingBehavior(), new StandardParkingBoyFetchingBehavior());
 
         ParkingLotServiceManager manager = new ParkingLotServiceManager(Stream.of(new ParkingLot(10)).collect(Collectors.toList()));
 

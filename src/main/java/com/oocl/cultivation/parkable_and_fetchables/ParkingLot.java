@@ -8,7 +8,7 @@ import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketExce
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot implements ParkableAndFetchable {
+public class ParkingLot implements Parkable {
     private final Integer CAPACITY;
     private final Map<ParkingTicket, Car> parkedCars;
 

@@ -5,7 +5,7 @@ import com.oocl.cultivation.ParkingTicket;
 import com.oocl.cultivation.parking_lot_exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketException;
 
-public interface ParkableAndFetchable {
+public interface Parkable {
     ParkingTicket park(Car car) throws NotEnoughPositionException;
     Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException;
 }

@@ -6,22 +6,22 @@ import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketExce
 
 import java.util.List;
 
-public class ParkingLotServiceManager implements ParkableAndFetchable {
-    private final List<ParkableAndFetchable> managementList;
+public class ParkingLotServiceManager implements Parkable {
+    private final List<Parkable> managementList;
 
-    public ParkingLotServiceManager(List<ParkableAndFetchable> parkableAndFetchables) {
-        this.managementList = parkableAndFetchables;
+    public ParkingLotServiceManager(List<Parkable> parkables) {
+        this.managementList = parkables;
     }
 
-    public void addToManagementList(ParkableAndFetchable parkableAndFetchable) {
-        managementList.add(parkableAndFetchable);
+    public void addToManagementList(Parkable parkable) {
+        managementList.add(parkable);
     }
 
     @Override
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
-        for (ParkableAndFetchable parkableAndFetchable : managementList) {
+        for (Parkable parkable : managementList) {
             try {
-                return parkableAndFetchable.park(car);
+                return parkable.park(car);
             }
             catch (NotEnoughPositionException ignored) {}
         }
@@ -30,9 +30,9 @@ public class ParkingLotServiceManager implements ParkableAndFetchable {
 
     @Override
     public Car fetch(ParkingTicket ticket) throws UnrecognizedParkingTicketException {
-        for (ParkableAndFetchable parkableAndFetchable : managementList) {
+        for (Parkable parkable : managementList) {
             try {
-                return parkableAndFetchable.fetch(ticket);
+                return parkable.fetch(ticket);
             }
             catch (UnrecognizedParkingTicketException ignored) {}
         }

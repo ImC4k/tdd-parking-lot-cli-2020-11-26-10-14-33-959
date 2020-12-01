@@ -8,7 +8,7 @@ import com.oocl.cultivation.parking_lot_exceptions.UnrecognizedParkingTicketExce
 
 import java.util.List;
 
-public class ParkingBoy implements ParkableAndFetchable {
+public class ParkingBoy implements Parkable {
     private final List<ParkingLot> parkingLots;
     private final ParkingBoyParkingBehavior parkingBoyParkingBehavior;
     private final ParkingBoyFetchingBehavior parkingBoyFetchingBehavior;
