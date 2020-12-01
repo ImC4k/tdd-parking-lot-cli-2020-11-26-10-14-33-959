@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ParkingBoy implements ParkableAndFetchable {
     private final List<ParkingLot> parkingLots;
-    protected ParkingBoyParkingBehavior parkingBoyParkingBehavior;
-    protected ParkingBoyFetchingBehavior parkingBoyFetchingBehavior;
+    private final ParkingBoyParkingBehavior parkingBoyParkingBehavior;
+    private final ParkingBoyFetchingBehavior parkingBoyFetchingBehavior;
 
     public ParkingBoy(List<ParkingLot> parkingLots, ParkingBoyParkingBehavior parkingBoyParkingBehavior, ParkingBoyFetchingBehavior parkingBoyFetchingBehavior) {
         this.parkingLots = parkingLots;
